@@ -13,7 +13,7 @@ fun main() {
     println("Hello World!")
     val pop = EftiDomPopulator(42, RepeatablePopulateMode.MINIMUM_ONE)
     val doc = newDocument()
-    pop.populate(doc, EftiSchemas.readConsignmentCommonSchema())
+    pop.populate(doc, EftiSchemas.readConsignmentIdentifiersSchema())
     println(serializeToString(doc))
 }
 
