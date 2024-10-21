@@ -3,5 +3,5 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":populate"))
+    api(project(":schema"))
 }
