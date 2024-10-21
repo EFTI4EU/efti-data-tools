@@ -3,5 +3,5 @@ plugins {
 }
 
 dependencies {
-    project(":schema")
+    implementation("org.apache.xmlbeans:xmlbeans:5.2.1")
 }
