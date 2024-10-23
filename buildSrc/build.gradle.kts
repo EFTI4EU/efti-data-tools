@@ -11,4 +11,5 @@ repositories {
 
 dependencies {
     implementation("org.jetbrains.kotlin.jvm:org.jetbrains.kotlin.jvm.gradle.plugin:$kotlinVersion")
+    implementation("com.github.jk1:gradle-license-report:2.9")
 }

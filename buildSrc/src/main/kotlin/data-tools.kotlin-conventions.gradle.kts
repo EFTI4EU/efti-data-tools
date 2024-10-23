@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     kotlin("jvm")
+    id("com.github.jk1.dependency-license-report")
 }
 
 repositories {
@@ -31,4 +32,16 @@ tasks.test {
         events("passed", "skipped", "failed")
         exceptionFormat = TestExceptionFormat.FULL
     }
+}
+
+licenseReport {
+    allowedLicensesFile = rootProject.file("allowed-licenses.json")
+}
+
+tasks.checkLicense {
+    inputs.file("$rootDir/allowed-licenses.json")
+}
+
+tasks.check {
+    dependsOn(tasks.checkLicense)
 }
