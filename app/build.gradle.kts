@@ -5,6 +5,7 @@ plugins {
 
 dependencies {
     implementation(project(":populate"))
+    implementation("com.beust:jcommander:1.82")
 }
 
 application {
