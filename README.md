@@ -5,5 +5,16 @@ Command line tool and library for generating random xml documents for eFTI consi
 
 ## Command line tool
 
-./gradlew app:build
-./
+Build with:
+```
+./gradlew build
+```
+
+Unzip [app.zip](./app/build/distributions/app.zip) and run:
+```
+# On *nix:
+app/bin/app --help
+
+# On Windows:
+app/bin/app.bat --help
+```
