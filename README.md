@@ -12,6 +12,7 @@ Build with:
 
 Unzip [app.zip](./app/build/distributions/app.zip) and run:
 ```
+
 # On *nix:
 app/bin/app --help
 
