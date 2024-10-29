@@ -34,6 +34,18 @@ tasks.test {
     }
 }
 
+tasks.register<Test>("updateTestExpectations") {
+    useJUnitPlatform {
+        includeTags("expectation-update")
+        ignoreFailures = true
+    }
+
+    environment("eu.efti.updateTestExpectations", "true")
+
+    // Always run task even if it has successfully completed earlier
+    outputs.upToDateWhen { false }
+}
+
 licenseReport {
     allowedLicensesFile = rootProject.file("allowed-licenses.json")
 }

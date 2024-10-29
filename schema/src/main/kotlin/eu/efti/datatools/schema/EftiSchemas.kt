@@ -6,15 +6,27 @@ import org.apache.xmlbeans.XmlObject
 import org.apache.xmlbeans.XmlOptions
 import org.xml.sax.InputSource
 import java.io.InputStream
+import java.net.URL
+import javax.xml.XMLConstants
+import javax.xml.validation.Schema
+import javax.xml.validation.SchemaFactory
 
 private const val PATH_COMMON = "/consignment-common.xsd"
 
 private const val PATH_IDENTIFIER = "/consignment-identifier.xsd"
 
 object EftiSchemas {
+    private val schemaFactory: SchemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI)
+
     private val xmlBeansCommonSchema: SchemaTypeSystem = readXmlBeansSchema(PATH_COMMON)
 
     private val xmlBeansIdentifierSchema: SchemaTypeSystem = readXmlBeansSchema(PATH_IDENTIFIER)
+
+    val javaCommonSchema: Schema =
+        schemaFactory.newSchema(getResourceUrl(PATH_COMMON))
+
+    val javaIdentifiersSchema: Schema =
+        schemaFactory.newSchema(getResourceUrl(PATH_IDENTIFIER))
 
     fun readConsignmentCommonSchema(): XmlSchemaElement = XmlSchemaParser.parse(
         xmlBeansCommonSchema,
@@ -54,5 +66,8 @@ object EftiSchemas {
             XmlBeans.getContextTypeLoader(),
             xmlOptions,
         )
+    }
+    private fun getResourceUrl(path: String): URL = checkNotNull(EftiSchemas::class.java.getResource(path)) {
+        "Could not find resource $path"
     }
 }
