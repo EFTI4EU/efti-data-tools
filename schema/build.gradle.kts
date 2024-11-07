@@ -16,4 +16,6 @@ dependencies {
 
     runtimeOnly(platform("org.apache.logging.log4j:log4j-bom:2.24.1"))
     runtimeOnly("org.apache.logging.log4j:log4j-core")
+
+    testImplementation(project(":test-support"))
 }

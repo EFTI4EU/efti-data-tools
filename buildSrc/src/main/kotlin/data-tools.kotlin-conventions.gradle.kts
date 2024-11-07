@@ -12,10 +12,10 @@ repositories {
 }
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.11.2"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testImplementation("org.hamcrest:hamcrest-core:2.2")
-    testImplementation("org.xmlunit:xmlunit-matchers:2.10.0")
+//    testImplementation(platform("org.junit:junit-bom:5.11.2"))
+//    testImplementation("org.junit.jupiter:junit-jupiter")
+//    testImplementation("org.hamcrest:hamcrest-core:2.2")
+//    testImplementation("org.xmlunit:xmlunit-matchers:2.10.0")
 }
 
 kotlin {

@@ -4,4 +4,5 @@ plugins {
 
 dependencies {
     api(project(":schema"))
+    testImplementation(project(":test-support"))
 }

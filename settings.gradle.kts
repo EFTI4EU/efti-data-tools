@@ -4,4 +4,5 @@ include(
     "app",
     "populate",
     "schema",
+    "test-support",
 )
