@@ -3,7 +3,6 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     kotlin("jvm")
-    id("com.github.jk1.dependency-license-report")
 }
 
 repositories {
@@ -45,16 +44,4 @@ tasks.register<Test>("updateTestExpectations") {
 
     // Always run task even if it has successfully completed earlier
     outputs.upToDateWhen { false }
-}
-
-licenseReport {
-    allowedLicensesFile = rootProject.file("allowed-licenses.json")
-}
-
-tasks.checkLicense {
-    inputs.file("$rootDir/allowed-licenses.json")
-}
-
-tasks.check {
-    dependsOn(tasks.checkLicense)
 }

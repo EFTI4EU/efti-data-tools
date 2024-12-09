@@ -24,7 +24,19 @@ jobs:
       uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
 
     - name: Build with Gradle Wrapper
-      run: ./gradlew build
+      run: ./gradlew build check
+
+    - name: Upload license reports
+      # Try to upload report even if previous step fails
+      if: '!cancelled()'
+      continue-on-error: true
+      uses: actions/upload-artifact@v4
+      with:
+        if-no-files-found: error
+        name: license-check-report
+        path: |
+          ./build/reports/dependency-license/dependencies-without-allowed-license.json
+          ./build/reports/dependency-license/project-licenses-for-check-license-task.json
 
     - name: Prepare lib artifacts
       run: |
