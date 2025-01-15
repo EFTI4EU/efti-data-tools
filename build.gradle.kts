@@ -13,6 +13,6 @@ tasks.checkLicense {
     inputs.file("$rootDir/allowed-licenses.json")
 }
 
-tasks.create("check") {
+tasks.register("check") {
     dependsOn(tasks.checkLicense)
 }

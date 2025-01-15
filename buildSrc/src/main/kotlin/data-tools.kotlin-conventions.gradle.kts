@@ -19,6 +19,8 @@ dependencies {
     testImplementation("org.hamcrest:hamcrest-core:2.2")
     testImplementation("org.xmlunit:xmlunit-matchers:$xmlunitVersion")
     testImplementation("org.xmlunit:xmlunit-jakarta-jaxb-impl:$xmlunitVersion")
+
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 kotlin {
