@@ -4,6 +4,14 @@ plugins {
     `java-library`
 }
 
+val libraryVersion: String by lazy {
+    rootProject.file("../../gradle.properties")
+        .readLines()
+        .first { it.startsWith("version=") }
+        .split("=")
+        .last()
+}
+
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
@@ -18,12 +26,12 @@ repositories {
 }
 
 dependencies {
-    implementation("eu.efti.datatools:schema:0.1.0")
+    implementation("eu.efti.datatools:schema:$libraryVersion")
 
     testImplementation(platform("org.junit:junit-bom:5.11.2"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 
-    testImplementation("eu.efti.datatools:populate:0.1.0")
+    testImplementation("eu.efti.datatools:populate:$libraryVersion")
 }
 
 tasks.test {

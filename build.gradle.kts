@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "eu.efti.datatools"
-version = "0.1.0"
+version = project.property("version") as String
 
 licenseReport {
     allowedLicensesFile = rootProject.file("allowed-licenses.json")
