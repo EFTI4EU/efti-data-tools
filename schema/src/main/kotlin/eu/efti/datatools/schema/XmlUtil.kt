@@ -18,12 +18,14 @@ import javax.xml.transform.dom.DOMSource
 import javax.xml.validation.Schema
 
 object XmlUtil {
+    @JvmStatic
     fun clone(doc: Document): Document {
         val domResult = DOMResult()
         TransformerFactory.newInstance().newTransformer().transform(DOMSource(doc), domResult)
         return checkNotNull(domResult.node as Document)
     }
 
+    @JvmStatic
     fun validate(doc: Document, javaSchema: Schema): String? {
         val xmlSource: Source = DOMSource(doc)
         val error = try {
@@ -37,6 +39,7 @@ object XmlUtil {
         return error
     }
 
+    @JvmStatic
     fun serializeToString(doc: Document, prettyPrint: Boolean = false): String {
         val registry = DOMImplementationRegistry.newInstance()
         val domImplLS = registry.getDOMImplementation("LS") as DOMImplementationLS
@@ -54,6 +57,7 @@ object XmlUtil {
         return byteArrayOutputStream.toString(Charsets.UTF_8)
     }
 
+    @JvmStatic
     fun deserializeToDocument(xml: String, namespaceAware: Boolean = true): Document = try {
         val factory = DocumentBuilderFactory.newInstance().also { it.isNamespaceAware = namespaceAware }
         val builder = factory.newDocumentBuilder()
@@ -65,6 +69,7 @@ object XmlUtil {
     fun NodeList.asIterable(): Iterable<Node> =
         (0 until this.length).asSequence().map { this.item(it) }.asIterable()
 
+    @JvmStatic
     fun dropNodesRecursively(
         schema: XmlSchemaElement,
         node: Node,

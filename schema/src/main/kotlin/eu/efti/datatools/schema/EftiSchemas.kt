@@ -18,13 +18,17 @@ private const val PATH_IDENTIFIER = "/consignment-identifier.xsd"
 object EftiSchemas {
     private val schemaFactory: SchemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI)
 
+    @JvmStatic
     val consignmentCommonSchema: XmlSchemaElement = readConsignmentCommonSchema()
 
+    @JvmStatic
     val consignmentIdentifierSchema: XmlSchemaElement = readConsignmentIdentifierSchema()
 
+    @JvmStatic
     val javaCommonSchema: Schema =
         schemaFactory.newSchema(getResourceUrl(PATH_COMMON))
 
+    @JvmStatic
     val javaIdentifiersSchema: Schema =
         schemaFactory.newSchema(getResourceUrl(PATH_IDENTIFIER))
 

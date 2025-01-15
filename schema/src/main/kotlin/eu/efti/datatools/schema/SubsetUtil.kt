@@ -12,12 +12,15 @@ import org.w3c.dom.Node
 import javax.xml.validation.Schema
 
 object SubsetUtil {
+    @JvmStatic
     fun filterCommonSubsets(doc: Document, subsets: Set<XmlSchemaElement.SubsetId>): Document =
         filterSubsets(doc, subsets, javaCommonSchema, consignmentCommonSchema)
 
+    @JvmStatic
     fun filterIdentifierSubsets(doc: Document, subsets: Set<XmlSchemaElement.SubsetId>): Document =
         filterSubsets(doc, subsets, javaIdentifiersSchema, consignmentIdentifierSchema)
 
+    @JvmStatic
     fun dropNodesNotInSubsets(subsets: Set<XmlSchemaElement.SubsetId>, schema: XmlSchemaElement, node: Node) {
         require(subsets.isNotEmpty()) {
             "subsets must be non-empty"
