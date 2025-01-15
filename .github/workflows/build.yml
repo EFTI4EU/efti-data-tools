@@ -39,16 +39,17 @@ jobs:
           ./build/reports/dependency-license/project-licenses-for-check-license-task.json
 
     - name: Prepare lib artifacts
-      run: |
-        mkdir -p build/lib
-        cp ./populate/build/libs/populate.jar build/lib
-        cp ./schema/build/libs/schema.jar build/lib
+      run: ./gradlew publishMavenPublicationToLocalMavenRepoRepository
+
+    - name: Test example project
+      working-directory: example/java
+      run: ./gradlew test
 
     - name: Upload library artifacts
       uses: actions/upload-artifact@v4
       with:
         name: eu.efti.datatools.lib.${{ github.sha }}
-        path: ./build/lib/*
+        path: ./build/local-maven-repo/
 
     - name: Upload app artifact
       uses: actions/upload-artifact@v4
