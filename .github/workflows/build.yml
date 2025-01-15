@@ -57,3 +57,26 @@ jobs:
         name: eu.efti.datatools.app.${{ github.sha }}
         path: |
           ./app/build/distributions/app.zip
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download application jar
+        uses: actions/download-artifact@v4
+        with:
+          name: eu.efti.datatools.lib.${{ github.sha }}
+          path: ./lib
+
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
+        run: |
+          gh release create "$tag" \
+              --repo="$GITHUB_REPOSITORY" \
+              --title="${GITHUB_REPOSITORY#*/} ${tag}" \
+              ./lib/*
