@@ -1,3 +1,11 @@
+> [!IMPORTANT]
+> Development of this library has been moved to
+> [https://github.com/fintraffic-efti/efti-data-tools](https://github.com/fintraffic-efti/efti-data-tools).
+> 
+> Please follow [fintraffic-efti/efti-data-tools/releases](https://github.com/fintraffic-efti/efti-data-tools/releases)
+> for new releases and update you Maven repository configuration following the instructions at
+> [fintraffic-efti/efti-data-tools#usage](https://github.com/fintraffic-efti/efti-data-tools#usage).
+
 # efti-data-tools
 
 Java libraries and command line tool for filtering subsets and generating random xml documents of eFTI consignment schemas
